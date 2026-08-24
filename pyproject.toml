@@ -1,0 +1,16 @@
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+  "ASYNC", "B", "C4", "D", "E", "F", "I", "N", "PIE", "PT", "RET", "RUF", "SIM", "TID", "UP", "W",
+]
+ignore = ["D203", "D213"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

@@ -1,0 +1,52 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Homiris account",
+        "description": "Use the credentials of the Homiris mobile app. The client token is the Basic authorization token the app sends to the Homiris API.",
+        "data": {
+          "username": "Login",
+          "password": "Password",
+          "client_token": "Client token",
+          "phone_type": "Phone model",
+          "url": "API base URL"
+        },
+        "data_description": {
+          "username": "The account number used in the Homiris app.",
+          "phone_type": "Optional, reported to the API as the phone running the app.",
+          "url": "Only change this if Homiris moved its API."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Homiris account",
+        "description": "The Homiris API rejected the credentials of {username}.",
+        "data": {
+          "password": "Password",
+          "client_token": "Client token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the Homiris API.",
+      "invalid_auth": "The Homiris API rejected these credentials.",
+      "unknown": "Unexpected error, see the logs."
+    },
+    "abort": {
+      "already_configured": "This Homiris account is already set up.",
+      "reauth_successful": "Homiris is reconnected."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Homiris options",
+        "data": {
+          "scan_interval": "Polling interval"
+        },
+        "data_description": {
+          "scan_interval": "How often the Homiris API is asked for the state of the system."
+        }
+      }
+    }
+  }
+}

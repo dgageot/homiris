@@ -1,0 +1,52 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Compte Homiris",
+        "description": "Utilisez les identifiants de l'application mobile Homiris. Le jeton client est le jeton d'autorisation Basic que l'application envoie à l'API Homiris.",
+        "data": {
+          "username": "Identifiant",
+          "password": "Mot de passe",
+          "client_token": "Jeton client",
+          "phone_type": "Modèle de téléphone",
+          "url": "URL de l'API"
+        },
+        "data_description": {
+          "username": "Le numéro de compte utilisé dans l'application Homiris.",
+          "phone_type": "Facultatif, transmis à l'API comme téléphone exécutant l'application.",
+          "url": "À modifier seulement si Homiris a déplacé son API."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Compte Homiris",
+        "description": "L'API Homiris a refusé les identifiants de {username}.",
+        "data": {
+          "password": "Mot de passe",
+          "client_token": "Jeton client"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de joindre l'API Homiris.",
+      "invalid_auth": "L'API Homiris a refusé ces identifiants.",
+      "unknown": "Erreur inattendue, consultez les journaux."
+    },
+    "abort": {
+      "already_configured": "Ce compte Homiris est déjà configuré.",
+      "reauth_successful": "Homiris est reconnecté."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options Homiris",
+        "data": {
+          "scan_interval": "Intervalle d'interrogation"
+        },
+        "data_description": {
+          "scan_interval": "Fréquence à laquelle l'état du système est demandé à l'API Homiris."
+        }
+      }
+    }
+  }
+}
