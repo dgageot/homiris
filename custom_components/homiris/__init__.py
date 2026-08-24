@@ -8,7 +8,6 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .api import DEFAULT_BASE_URL, HomirisClient
 from .const import (
-    CONF_CLIENT_TOKEN,
     CONF_PHONE_TYPE,
     CONF_SCAN_INTERVAL,
     DEFAULT_SCAN_INTERVAL,
@@ -23,7 +22,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: HomirisConfigEntry) -> b
         async_get_clientsession(hass),
         login=entry.data[CONF_USERNAME],
         password=entry.data[CONF_PASSWORD],
-        client_token=entry.data[CONF_CLIENT_TOKEN],
         phone_type=entry.data.get(CONF_PHONE_TYPE, ""),
         base_url=entry.data.get(CONF_URL, DEFAULT_BASE_URL),
     )

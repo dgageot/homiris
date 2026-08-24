@@ -9,12 +9,7 @@ from homeassistant.data_entry_flow import FlowResultType
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 
-from custom_components.homiris.const import (
-    CONF_CLIENT_TOKEN,
-    CONF_PHONE_TYPE,
-    CONF_SCAN_INTERVAL,
-    DOMAIN,
-)
+from custom_components.homiris.const import CONF_PHONE_TYPE, CONF_SCAN_INTERVAL, DOMAIN
 
 from .conftest import BASE_URL, CREDENTIALS, TOKEN_URL, mock_api
 
@@ -35,7 +30,6 @@ async def test_user_flow(hass: HomeAssistant, api: AiohttpClientMocker) -> None:
     assert result["data"] == {
         CONF_USERNAME: "123456",
         CONF_PASSWORD: "secret",
-        CONF_CLIENT_TOKEN: "client-token",
         CONF_PHONE_TYPE: "",
         CONF_URL: BASE_URL,
     }
@@ -99,15 +93,13 @@ async def test_reauth_flow(
     assert result["step_id"] == "reauth_confirm"
 
     result = await hass.config_entries.flow.async_configure(
-        result["flow_id"],
-        {CONF_PASSWORD: "new-secret", CONF_CLIENT_TOKEN: "new-token"},
+        result["flow_id"], {CONF_PASSWORD: "new-secret"}
     )
     await hass.async_block_till_done()
 
     assert result["type"] is FlowResultType.ABORT
     assert result["reason"] == "reauth_successful"
     assert entry.data[CONF_PASSWORD] == "new-secret"
-    assert entry.data[CONF_CLIENT_TOKEN] == "new-token"
 
 
 async def test_options_flow(

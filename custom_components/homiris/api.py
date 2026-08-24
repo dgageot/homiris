@@ -11,6 +11,11 @@ APP_VERSION = "4.35.3"
 DEFAULT_BASE_URL = "https://y41hsspp-mobile.eps-api.com/"
 API_PREFIX = "smartphone/production/1.0.0/"
 
+# Public application credential embedded in the official app. It identifies the
+# app, not the subscriber; the API authenticates subscribers separately with
+# their login and password.
+APP_CLIENT_TOKEN = "NHhSOG1LZFk5OFBRalpkNU1NUzJRNWZYWl9RYTpEajkwbF9IOGs3WGJvZ1pTbzl3MUxTemxOZ01h"
+
 TIMEOUT = ClientTimeout(total=20)
 
 
@@ -38,7 +43,6 @@ class HomirisClient:
         session: ClientSession,
         login: str,
         password: str,
-        client_token: str,
         phone_type: str = "",
         base_url: str = DEFAULT_BASE_URL,
     ) -> None:
@@ -46,7 +50,6 @@ class HomirisClient:
         self._session = session
         self._login = login
         self._password = password
-        self._client_token = client_token
         self._phone_type = phone_type
         self._base_url = base_url.rstrip("/") + "/"
         self._access_token: str | None = None
@@ -82,7 +85,7 @@ class HomirisClient:
             "POST",
             "token",
             headers={
-                "Authorization": f"Basic {self._client_token}",
+                "Authorization": f"Basic {APP_CLIENT_TOKEN}",
                 "Content-Type": "application/x-www-form-urlencoded",
             },
             data={"grant_type": "client_credentials", "scope": "PRODUCTION"},

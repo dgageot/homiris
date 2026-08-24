@@ -3,11 +3,10 @@
     "step": {
       "user": {
         "title": "Homiris account",
-        "description": "Use the credentials of the Homiris mobile app. The client token is the Basic authorization token the app sends to the Homiris API.",
+        "description": "Use the credentials of the Homiris mobile app.",
         "data": {
           "username": "Login",
           "password": "Password",
-          "client_token": "Client token",
           "phone_type": "Phone model",
           "url": "API base URL"
         },
@@ -21,8 +20,7 @@
         "title": "Homiris account",
         "description": "The Homiris API rejected the credentials of {username}.",
         "data": {
-          "password": "Password",
-          "client_token": "Client token"
+          "password": "Password"
         }
       }
     },

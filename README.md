@@ -14,7 +14,6 @@ official app.
 2. **Settings → Devices & services → Add integration → Homiris**, and fill in:
    - **Login**: the account number used in the Homiris app
    - **Password**: the app password
-   - **Client token**: the `Basic` authorization token the app sends to the API
 
 The polling interval (60 s by default) can be changed later with **Configure**.
 

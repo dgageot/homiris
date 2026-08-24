@@ -8,7 +8,6 @@ DOMAIN = "homiris"
 
 PLATFORMS: tuple[Platform, ...] = (Platform.BINARY_SENSOR, Platform.SENSOR)
 
-CONF_CLIENT_TOKEN = "client_token"
 CONF_PHONE_TYPE = "phone_type"
 CONF_SCAN_INTERVAL = "scan_interval"
 

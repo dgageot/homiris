@@ -9,7 +9,7 @@ from homeassistant.const import CONF_PASSWORD, CONF_URL, CONF_USERNAME
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 
-from custom_components.homiris.const import CONF_CLIENT_TOKEN, DOMAIN
+from custom_components.homiris.const import DOMAIN
 
 BASE_URL = "https://homiris.test/"
 TOKEN_URL = f"{BASE_URL}token"
@@ -19,7 +19,6 @@ HOMEPAGE_URL = f"{BASE_URL}smartphone/production/1.0.0/homepage/session-id"
 CREDENTIALS = {
     CONF_USERNAME: "123456",
     CONF_PASSWORD: "secret",
-    CONF_CLIENT_TOKEN: "client-token",
     CONF_URL: BASE_URL,
 }
 

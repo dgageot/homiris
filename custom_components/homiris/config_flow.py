@@ -30,7 +30,6 @@ from .api import (
     HomirisConnectionError,
 )
 from .const import (
-    CONF_CLIENT_TOKEN,
     CONF_PHONE_TYPE,
     CONF_SCAN_INTERVAL,
     DEFAULT_SCAN_INTERVAL,
@@ -46,18 +45,12 @@ STEP_USER_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_USERNAME): TextSelector(),
         vol.Required(CONF_PASSWORD): _PASSWORD_FIELD,
-        vol.Required(CONF_CLIENT_TOKEN): _PASSWORD_FIELD,
         vol.Optional(CONF_PHONE_TYPE, default=""): TextSelector(),
         vol.Optional(CONF_URL, default=DEFAULT_BASE_URL): TextSelector(),
     }
 )
 
-STEP_REAUTH_SCHEMA = vol.Schema(
-    {
-        vol.Required(CONF_PASSWORD): _PASSWORD_FIELD,
-        vol.Required(CONF_CLIENT_TOKEN): _PASSWORD_FIELD,
-    }
-)
+STEP_REAUTH_SCHEMA = vol.Schema({vol.Required(CONF_PASSWORD): _PASSWORD_FIELD})
 
 OPTIONS_SCHEMA = vol.Schema(
     {
@@ -126,7 +119,6 @@ class HomirisConfigFlow(ConfigFlow, domain=DOMAIN):
             async_get_clientsession(self.hass),
             login=user_input[CONF_USERNAME],
             password=user_input[CONF_PASSWORD],
-            client_token=user_input[CONF_CLIENT_TOKEN],
             phone_type=user_input.get(CONF_PHONE_TYPE, ""),
             base_url=user_input.get(CONF_URL) or DEFAULT_BASE_URL,
         )
